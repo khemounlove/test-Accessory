@@ -356,7 +356,7 @@
               <button @click="removeFromCart(item)" class="bg-red-500 text-white w-8 h-8 rounded-full hover:bg-red-600 text-sm">🗑</button>
             </div>
             <div class="bg-pink-50 p-5 rounded-2xl mt-4"><div class="flex justify-between font-bold text-xl"><span>សរុប</span><span class="text-pink-500">${{ formatPrice(cartTotal) }}</span></div></div>
-            <button @click="currentStep = 2" class="w-full bg-amber-400 text-white font-bold py-3 rounded-full mt-5 text-lg hover:bg-amber-500 transition">បន្ត →</button>
+            <button @click="currentStep = 2" class="w-full bg-amber-400 text-white font-bold py-3 rounded-full mt-5 text-lg hover:bg-amber-500 transition">បន្ត </button>
           </div>
         </div>
 
@@ -367,7 +367,7 @@
             <div><label class="text-sm font-semibold text-blue-600 khmer-text required">📍 អាសយដ្ឋានសម្រាប់ដឹកជញ្ជូន</label><textarea rows="3" v-model="checkoutForm.address" @blur="validateField('address')" :class="['w-full border rounded-2xl p-3 text-base khmer-text', errors.address ? 'border-red-500' : 'border-pink-200']" placeholder="ផ្លូវ, ស្រុក/ខណ្ឌ, ខេត្ត/ក្រុង"></textarea><span v-if="errors.address" class="required-hint">{{ errors.address }}</span></div>
             <div><label class="text-sm font-semibold text-blue-600 khmer-text">💬 កំណត់ចំណាំ (មិនបំពេញក៏បាន)</label><textarea rows="1" v-model="checkoutForm.notes" class="w-full border border-pink-200 rounded-2xl p-3 text-base khmer-text" placeholder="សារអំណោយ ឬសំណើពិសេស"></textarea></div>
           </div>
-          <div class="flex gap-3 mt-6"><button @click="currentStep = 1" class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full text-sm hover:bg-gray-300">← ត្រឡប់</button><button @click="validateAndProceed" class="flex-1 bg-amber-400 text-white font-bold py-2 rounded-full text-lg hover:bg-amber-500 transition">បន្ត →</button></div>
+          <div class="flex gap-3 mt-6"><button @click="currentStep = 1" class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full text-sm hover:bg-gray-300">ត្រឡប់</button><button @click="validateAndProceed" class="flex-1 bg-amber-400 text-white font-bold py-2 rounded-full text-lg hover:bg-amber-500 transition">បន្ត </button></div>
         </div>
 
         <div v-if="currentStep === 3">
@@ -386,7 +386,7 @@
             </div>
             <p class="text-xs text-gray-400 mt-3 khmer-text">បន្ទាប់ពីស្កេនរួច សូមបញ្ជាក់ការបញ្ជាទិញ</p>
           </div>
-          <div class="flex gap-3 mt-5"><button @click="currentStep = 2" class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full text-sm hover:bg-gray-300">← ត្រឡប់</button><button @click="confirmPaymentAndSendTelegram" class="flex-1 bg-[#0088cc] text-white font-bold py-2 rounded-full text-lg hover:bg-[#006699] transition"> បញ្ជាក់ការបញ្ជាទិញ</button></div>
+          <div class="flex gap-3 mt-5"><button @click="currentStep = 2" class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full text-sm hover:bg-gray-300">ត្រឡប់</button><button @click="confirmPaymentAndSendTelegram" class="flex-1 bg-[#0088cc] text-white font-bold py-2 rounded-full text-lg hover:bg-[#006699] transition">បញ្ជាក់ការបញ្ជាទិញ</button></div>
         </div>
 
         <div v-if="currentStep === 4">
@@ -398,7 +398,7 @@
             <p class="text-base"><strong>ចំនួនទឹកប្រាក់:</strong> ${{ formatPrice(lastOrderTotal) }}</p>
             <p class="text-base"><strong>ស្ថានភាព:</strong> កំពុងដំណើរការរៀបចំដឹកជញ្ជូន 🚚</p>
             <hr class="my-4">
-            <p class="text-sm khmer-text">ព័ត៌មានតាមដាននឹងត្រូវបានផ្ញើទៅកាន់ម្ចាស់ហាងក្នុងពេលឥឡូវនេះ។</p>
+            <p class="text-sm khmer-text">ព័ត៌មានតាមដាននឹងត្រូវបានផ្ញើទៅកាន់ម្ចាស់ហាងក្នុងរយៈពេលឥឡូវនេះ។</p>
           </div>
           <button @click="continueShoppingAfterOrder" class="w-full bg-green-600 text-white font-bold py-3 rounded-full mt-5 text-lg hover:bg-green-700 transition">🛍️ បន្តការទិញឥវ៉ាន់</button>
         </div>
@@ -432,6 +432,7 @@
   <div v-if="selectedProduct" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-0 md:p-4" @click.self="selectedProduct = null">
     <div class="bg-white w-full h-full md:max-w-md md:h-auto md:rounded-3xl overflow-y-auto">
       <div class="sticky top-0 bg-white z-10 border-b border-pink-100 px-4 py-3 flex justify-between items-center">
+        <button @click="selectedProduct = null" class="bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-md active:scale-95 transition-transform">🌸</button>
         <h3 class="font-playfair text-pink-500 text-base font-bold khmer-text text-center line-clamp-1 px-2">{{ selectedProduct.name }}</h3>
         <button @click="selectedProduct = null" class="text-gray-400 w-10 h-10 rounded-full flex items-center justify-center text-2xl active:bg-gray-100 transition-colors">✕</button>
       </div>
@@ -440,7 +441,7 @@
       </div>
       <div class="p-5 pt-3">
         <div v-if="selectedProduct.sale && selectedProduct.oldPrice" class="mb-3 flex justify-center">
-          <span class="badge-discount-detail inline-block px-3 py-1.5 rounded-full text-sm font-bold">សន្សំ {{ Math.round(((selectedProduct.oldPrice - selectedProduct.price) / selectedProduct.oldPrice) * 100) }}% OFF</span>
+          <span class="badge-discount-detail inline-block px-3 py-1.5 rounded-full text-sm font-bold">Save {{ Math.round(((selectedProduct.oldPrice - selectedProduct.price) / selectedProduct.oldPrice) * 100) }}% OFF</span>
         </div>
         <p class="text-gray-600 text-sm leading-relaxed khmer-text text-center">{{ selectedProduct.description }}</p>
         <div class="flex items-center justify-center gap-3 mt-4">
@@ -466,7 +467,7 @@
         <a href="https://www.instagram.com/miniaccessories123/" target="_blank" class="social-icon w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-pink-400 transition-all duration-300"><i class="fab fa-instagram text-lg"></i></a>
         <a href="https://t.me/miniaccessries" target="_blank" class="social-icon w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-pink-400 transition-all duration-300"><i class="fab fa-telegram-plane text-lg"></i></a>
         <a href="https://tiktok.com/@miniaccessories1" target="_blank" class="social-icon w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-pink-400 transition-all duration-300"><i class="fab fa-tiktok text-lg"></i></a>
-        <a href="https://wa.me/1234567890" target="_blank" class="social-icon w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-pink-400 transition-all duration-300"><i class="fab fa-whatsapp text-lg"></i></a>
+        <a href="https://wa.me/061937991" target="_blank" class="social-icon w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-pink-400 transition-all duration-300"><i class="fab fa-whatsapp text-lg"></i></a>
       </div>
       <div class="space-y-2 text-xs khmer-text">
         <p class="text-sm font-semibold">© 2026 Mini Accessories — ការទូទាត់ប្រកបដោយសុវត្ថិភាពជាមួយ ធនាគារ</p>
@@ -640,7 +641,7 @@ ${itemsList}
 <b>💰 TOTAL AMOUNT:</b> <b>$${totalPaid.toFixed(2)}</b>
 ━━━━━━━━━━━━━━━━━━━━
 
-<b>​​​ Payment Slip Attached Below</b>
+<b> Payment Slip Attached Below</b>
 
 <b>⏱ Order Time:</b> ${new Date().toLocaleString('en-US', { hour12: false })}
 <b>🚚 Status:</b> Pending Confirmation`;
